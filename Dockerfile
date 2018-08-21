@@ -1,5 +1,6 @@
 FROM rocker/tidyverse:latest
 
+## Install packages we need like compilers and python
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
       autoconf \
       automake \
@@ -7,14 +8,19 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
       gcc \
       gfortran \
       make \
-      tcl8.6-dev \
-      tk8.6-dev \
       && apt-get clean all \
       && rm -rf /var/lib/apt/lists/*
 
+## Add some config settings for building R packages (compiler options)
 RUN mkdir -p $HOME/.R
 COPY Makevars /root/.R/Makevars
 
+## Install R packages
+#  This example shows how to install packages from:
+#
+#     - CRAN-like repos using install.packages()
+#     - Bioconductor using biocLite()
+#     - Github using devtools and install_github()
 RUN Rscript -e "install.packages('glmnet')" \
       -e "install.packages('pamr')" \
       -e "install.packages('ggplot2')" \
