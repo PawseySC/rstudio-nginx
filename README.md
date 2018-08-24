@@ -37,7 +37,7 @@ You should now have a working RStudio server that you can access via a web brows
 
 There are 4 containers that will be used:
 
-* Ngninx reverse proxy container
+* Nginx reverse proxy container
 * Nginx configuration container
 * Let's Encrypt certificate container
 * RStudio container 
