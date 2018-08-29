@@ -16,7 +16,7 @@ To begin you'll need the following installed on your Nimbus VM:
 
 There are several ways to install Docker, and I recommend you use the official version from Docker, as the version available through most package managers (e.g. yum, apt, etc.) is outdated.  Detailed instructions can be found [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
-You'll also need a domain (or subdomain) name for your Nimbus VM (you can create a free one using something like [No-IP](www.noip.com)).  You can also just use the static IP address you associated with your Nimbus VM (log into your [dashboard](https://nimbus.pawsey.org.au) to find it).
+You'll also need a domain (or subdomain) name for your Nimbus VM (you can create a free one using something like [No-IP](www.noip.com)).  
 
 ## Quick Start
 
@@ -24,14 +24,14 @@ More detail about each part is given below, but for those who just want to get u
 
 * Clone this [repository](https://github.com/skjerven/rstudio-nginx)
 * Edit `docker-compose.yaml`
-	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your static IP address, or your domain name
+	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your (sub)domain name
 	* Change `USER` and  `PASSWORD` to your desired RStudio username and password
 	* Change `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 	* If you want to mount any directories into your RStudio container you need to change the `VOLUMES TO BE MOUNTED` line in the `rstudio` section.  An example is given in the `docker-compose.yaml` file, where the directory `rstudio_data` is mounted to `/home/rstudio/data` in the cointainer
 * Edit `Dockerfile` to install desired R pacakges, change RStudio version, install other packages, etc.
 * Run `docker-compose up` to start the containers
 
-You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com* or *https://nimbus_static_ip*.
+You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com*.
  
 
 ## How it Works
