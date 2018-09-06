@@ -42,12 +42,13 @@ There are 4 containers that will be used:
 * Let's Encrypt certificate container
 * RStudio container 
 
-These 4 containers work together to setup the HTTPS certificates, create and configure an Nginx server, and launch an RStudio server.  While it's possible to manually configure and start each container, it's much easier to use [docker-compose]
-(https://github.com/docker/compose) to handle all of this for us.  At the end of this, all we'll need to do is run 
+These 4 containers work together to setup the HTTPS certificates, create and configure an Nginx server, and launch an RStudio server.  While it's possible to manually configure and start each container, it's much easier to use [docker-compose](https://github.com/docker/compose) to handle all of this for us.  At the end of this, all we'll need to do is run 
 
 `docker-compose up -d`
 
-and have a fully functional, containerised RStudio server running behind Nginx with HTTPS certificates.  Note that the `-d` flag means our containers will run in *detached mode* (in the background).  If you find your containers aren't working or you can't access RStudio, run `docker-compose` without the `-d` flag to see debug output.
+and have a fully functional, containerised RStudio server running behind Nginx with HTTPS certificates. 
+
+Note that the `-d` flag means our containers will run in *detached mode* (in the background).  If you find your containers aren't working or you can't access RStudio, run `docker-compose` without the `-d` flag to see debug output.
 
 ### Nginx reverse proxy container
 
