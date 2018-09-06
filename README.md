@@ -15,7 +15,7 @@ To begin you'll need the following installed on your Nimbus VM:
 
 There are several ways to install Docker, and I recommend you use the official version from Docker, as the version available through most package managers (e.g. yum, apt, etc.) is outdated.  Detailed instructions can be found [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
-You'll also need a domain (or subdomain) name for your Nimbus VM (you can create a free one using something like [No-IP](www.noip.com)).  You can also just use the static IP address you associated with your Nimbus VM (log into your [dashboard](https://nimbus.pawsey.org.au) to find it).
+You'll also need a domain (or subdomain) name for your Nimbus VM; you can create a free one using something like [No-IP](www.noip.com).
 
 ## Quick Start
 
