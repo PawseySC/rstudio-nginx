@@ -28,7 +28,7 @@ More detail about each part is given below, but for those who just want to get u
 	* Change `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 	* If you want to mount any directories into your RStudio container you need to change the `VOLUMES TO BE MOUNTED` line in the `rstudio` section.  An example is given in the `docker-compose.yml` file, where the directory `rstudio_data` is mounted to `/home/rstudio/data` in the cointainer
 * Edit `Dockerfile` to install desired R pacakges, change RStudio version, install other packages, etc.
-* Run `docker-compose up` to start the containers
+* Run `docker-compose up -d` to start the containers
 
 You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com*.
  
@@ -44,7 +44,7 @@ There are 4 containers that will be used:
 
 These 4 containers work together to setup the HTTPS certificates, create and configure an Nginx server, and launch an RStudio server.  While it's possible to manually configure and start each container, it's much easier to use (docker-compose)[https://github.com/docker/compose] to handle all of this for us.  At the end of this, all we'll need to do is run 
 
-`docker-compose up`
+`docker-compose up -d`
 
 and have a fully functional, containerised RStudio server running behind Nginx with HTTPS certificates.
 
