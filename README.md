@@ -23,14 +23,14 @@ More detail about each part is given below, but for those who just want to get u
 
 * Clone this [repository](https://github.com/skjerven/rstudio-nginx)
 * Edit `docker-compose.yml`
-	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your static IP address, or your domain name
+	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to your domain name
 	* Change `USER` and  `PASSWORD` to your desired RStudio username and password
 	* Change `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 	* If you want to mount any directories into your RStudio container you need to change the `VOLUMES TO BE MOUNTED` line in the `rstudio` section.  An example is given in the `docker-compose.yml` file, where the directory `rstudio_data` is mounted to `/home/rstudio/data` in the cointainer
 * Edit `Dockerfile` to install desired R pacakges, change RStudio version, install other packages, etc.
 * Run `docker-compose up` to start the containers
 
-You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com* or *https://nimbus_static_ip*.
+You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com*.
  
 
 ## How it Works
@@ -145,7 +145,7 @@ rstudio:
 ```
 The key options to change include
 
-* `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your static IP address, or your domain name
+* `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to your domain name
 * `USER` and  `PASSWORD` to your desired RStudio username and password
 * `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 * Additional volumes you want to mount into the container
