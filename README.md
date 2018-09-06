@@ -1,6 +1,6 @@
 # rstudio-nginx
 
-This is a simple example of how to set up an containerised RStudio server, running behind an Nginx reverse proxy, and being served
+This is a simple example of how to set up a containerised RStudio server, running behind an Nginx reverse proxy, and being served
 via HTTPS using free [Let’s Encrypt](https://letsencrypt.org) certificates.  The Nginx containers are the work of https://github.com/gilyes/docker-nginx-letsencrypt-sample,
 and more examples of how to add your own websites can be found there.
 
