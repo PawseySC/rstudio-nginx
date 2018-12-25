@@ -1,6 +1,6 @@
 # rstudio-nginx
 
-This is a simple example of how to set up an containerised RStudio server, running behind an Nginx reverse proxy, and being served
+This is a simple example of how to set up a containerised RStudio server, running behind an Nginx reverse proxy, and being served
 via HTTPS using free [Let’s Encrypt](https://letsencrypt.org) certificates.  The Nginx containers are the work of https://github.com/gilyes/docker-nginx-letsencrypt-sample,
 and more examples of how to add your own websites can be found there.
 
@@ -15,24 +15,23 @@ To begin you'll need the following installed on your Nimbus VM:
 
 There are several ways to install Docker, and I recommend you use the official version from Docker, as the version available through most package managers (e.g. yum, apt, etc.) is outdated.  Detailed instructions can be found [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
-You'll also need a domain (or subdomain) name for your Nimbus VM (you can create a free one using something like [No-IP](www.noip.com)).  
+You'll also need a domain (or subdomain) name for your Nimbus VM; you can create a free one using something like [No-IP](www.noip.com).
 
 ## Quick Start
 
 More detail about each part is given below, but for those who just want to get up and running, here's what you need to do:
 
 * Clone this [repository](https://github.com/skjerven/rstudio-nginx)
-<<<<<<< HEAD
 * Edit `docker-compose.yml`
-	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your (sub)domain name
+	* Change `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to your domain name
 	* Change `USER` and  `PASSWORD` to your desired RStudio username and password
 	* Change `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 	* If you want to mount any directories into your RStudio container you need to change the `VOLUMES TO BE MOUNTED` line in the `rstudio` section.  An example is given in the `docker-compose.yml` file, where the directory `rstudio_data` is mounted to `/home/rstudio/data` in the cointainer
 * Edit `Dockerfile` to install desired R pacakges, change RStudio version, install other packages, etc.
-* Run `docker-compose up` to start the containers
+* Run `docker-compose up -d` to start the containers
 
 You should now have a working RStudio server that you can access via a web browser at *https://mydomain.com*.
- 
+
 
 ## How it Works
 
@@ -43,11 +42,13 @@ There are 4 containers that will be used:
 * Let's Encrypt certificate container
 * RStudio container
 
-These 4 containers work together to setup the HTTPS certificates, create and configure an Nginx server, and launch an RStudio server.  While it's possible to manually configure and start each container, it's much easier to use (docker-compose)[https://github.com/docker/compose] to handle all of this for us.  At the end of this, all we'll need to do is run 
+These 4 containers work together to setup the HTTPS certificates, create and configure an Nginx server, and launch an RStudio server.  While it's possible to manually configure and start each container, it's much easier to use [docker-compose](https://github.com/docker/compose) to handle all of this for us.  At the end of this, all we'll need to do is run 
 
-`docker-compose up`
+`docker-compose up -d`
 
-and have a fully functional, containerised RStudio server running behind Nginx with HTTPS certificates.
+and have a fully functional, containerised RStudio server running behind Nginx with HTTPS certificates. 
+
+Note that the `-d` flag means our containers will run in *detached mode* (in the background).  If you find your containers aren't working or you can't access RStudio, run `docker-compose` without the `-d` flag to see debug output.
 
 ### Nginx reverse proxy container
 
@@ -146,7 +147,7 @@ rstudio:
 ```
 The key options to change include
 
-* `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to either your static IP address, or your domain name
+* `VIRTUAL_HOST` and `LETSENCRYPT_HOST` to your domain name
 * `USER` and  `PASSWORD` to your desired RStudio username and password
 * `LETSENCRYPT_EMAIL` to your preferred email address (it will be associated with the generated certificates)
 * Additional volumes you want to mount into the container
